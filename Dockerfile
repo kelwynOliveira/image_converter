@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libjpeg-dev \
     zlib1g-dev \
+    libheif-dev \
+    libde265-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

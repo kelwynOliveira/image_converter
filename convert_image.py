@@ -2,6 +2,7 @@ import io
 import re
 import unicodedata
 import logging
+import pillow_heif
 
 from PIL import Image, UnidentifiedImageError
 from fastapi import HTTPException, UploadFile
@@ -14,6 +15,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("image_converter")
 
+pillow_heif.register_heif_opener()
 # Suportted formats
 SUPPORTED_FORMATS = {
     "bmp": {"pillow": "BMP", "mime": "image/bmp"},
@@ -36,6 +38,8 @@ SUPPORTED_FORMATS = {
     "xbm": {"pillow": "XBM", "mime": "image/x-xbitmap"},
     "xpm": {"pillow": "XPM", "mime": "image/x-xpixmap"},
     "webp": {"pillow": "WEBP", "mime": "image/webp"},
+    "heic": {"pillow": "HEIC", "mime": "image/heic"},
+    "heif": {"pillow": "HEIF", "mime": "image/heif"},
 }
 
 # Aux
